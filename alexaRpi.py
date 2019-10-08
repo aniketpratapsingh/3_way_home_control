@@ -4,8 +4,8 @@ import time
 from pubnub import Pubnub
 
 # Initialize the Pubnub Keys
-pub_key = "pub-c-0c22aeab-9a27-47c1-9deb-dd46c377c0d1"
-sub_key = "sub-c-b0fcf26e-6848-11e9-912a-e2e853b4b660"
+pub_key = "<your publish key>"
+sub_key = "<your subscribe key>"
 PINS = [18,19,20,21,22,23,24]
 LIGHT = 18           #define pin of RPi on which you want to take output
 FAN = 23
