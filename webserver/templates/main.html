@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+   <title>RPi Web Server</title>
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+   <!-- Optional theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+
+<body>
+   <h1>RPi Web Server</h1>
+   {% for pin in pins %}
+   <h2>{{ pins[pin].name }}
+   {% if pins[pin].state == true %}
+      is currently <strong>on</strong></h2><div class="row"><div class="col-md-2">
+      <a href="/{{pin}}/off" class="btn btn-block btn-lg btn-default" role="button">
+      {% if pins[pin].name == "Light" %}
+	<img src="https://cdn0.iconfinder.com/data/icons/consumer-electronics-line/64/neon_light_electronic_devices_hardware_electric_equipment-512.png" href="/{{pin}}/off" width="128" height="128"></a>
+      {% elif pins[pin].name == "Fan" %}
+        <img src="https://www.fanco.com.au/wp-content/uploads/2018/06/Airflow-Hugger-GIF.gif" href="/{{pin}}/off" width="128" height="128"></a>
+      {% elif pins[pin].name == "Balcony Light" %}
+        <img src="https://static.thenounproject.com/png/208183-200.png" href="/{{pin}}/off" width="128" height="128"></a>
+      {% elif pins[pin].name == "Night Light" %}
+        <img src="https://cdn3.iconfinder.com/data/icons/business-finance-77/80/03_light_bulb_2-512.png" href="/{{pin}}/off" width="128" height="128"></a>
+      {% else %}
+      Turn off</a>{% endif %}</div></div>
+   {% else %}
+      is currently <strong>off</strong></h2><div class="row"><div class="col-md-2">
+      <a href="/{{pin}}/on" class="btn btn-block btn-lg btn-default" role="button">
+      {% if pins[pin].name == "Light" %}
+        <img src="https://cdn2.iconfinder.com/data/icons/electronic-devices-1/32/tubelight_light_source_cfl_tube_electric_electricity-512.png" href="/{{pin}}/on" width="128" height="128"></a>
+      {% elif pins[pin].name == "Fan" %}
+        <img src="https://static.thenounproject.com/png/111418-200.png" href="/{{pin}}/on" width="128" height="128"></a>
+      {% elif pins[pin].name == "Balcony Light" %}
+        <img src="https://static.thenounproject.com/png/208177-200.png" href="/{{pin}}/on" width="128" height="128"></a>
+      {% elif pins[pin].name == "Night Light" %}
+        <img src="https://cdn3.iconfinder.com/data/icons/business-finance-77/80/02_light_bulb-512.png" href="/{{pin}}/on" width="128" height="128"></a>
+      {% else %}
+      Turn on</a>{% endif %}</div></div>
+   {% endif %}
+   {% endfor %}
+</body>
+</html>
